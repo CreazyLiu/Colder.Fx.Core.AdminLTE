@@ -22,28 +22,28 @@ namespace Coldairarrow.Business.ProjectManage
         public List<Dev_ProjectDTO> GetDataList(string condition, string keyword, Pagination pagination)
         {
             var where = LinqHelper.True<Dev_ProjectDTO>();
-            //Expression<Func<Dev_Project, Dev_ProjectType, Dev_ProjectDTO>> select = (a, b) => new Dev_ProjectDTO
-            //{
-            //    ProjectTypeName = b.ProjectTypeName
-            //};
-            //select = select.BuildExtendSelectExpre();
+            Expression<Func<Dev_Project, Dev_ProjectType, Dev_ProjectDTO>> select = (a, b) => new Dev_ProjectDTO
+            {
+                ProjectTypeName = b.ProjectTypeName
+            };
+            select = select.BuildExtendSelectExpre();
+            var q = from a in GetIQueryable().AsExpandable()
+                    join b in Service.GetIQueryable<Dev_ProjectType>() on a.ProjectTypeId equals b.ProjectTypeId into ab
+                    from b in ab.DefaultIfEmpty()
+                    select @select.Invoke(a, b);
+
             //var q = from a in GetIQueryable()
             //        join b in Service.GetIQueryable<Dev_ProjectType>() on a.ProjectTypeId equals b.ProjectTypeId into ab
             //        from b in ab.DefaultIfEmpty()
-            //        select @select.Invoke(a, b);
-
-            var q = from a in GetIQueryable()
-                    join b in Service.GetIQueryable<Dev_ProjectType>() on a.ProjectTypeId equals b.ProjectTypeId into ab
-                    from b in ab.DefaultIfEmpty()
-                    select new Dev_ProjectDTO
-                    {
-                        Id = a.Id,
-                        ProjectId = a.ProjectId,
-                        ProjectTypeId = a.ProjectTypeId,
-                        ProjectTypeName = b == null ? string.Empty : b.ProjectTypeName,
-                        ProjectName = a.ProjectName,
-                        ProjectManagerId = a.ProjectManagerId
-                    };
+            //        select new Dev_ProjectDTO
+            //        {
+            //            Id = a.Id,
+            //            ProjectId = a.ProjectId,
+            //            ProjectTypeId = a.ProjectTypeId,
+            //            ProjectTypeName = b == null ? string.Empty : b.ProjectTypeName,
+            //            ProjectName = a.ProjectName,
+            //            ProjectManagerId = a.ProjectManagerId
+            //        };
             //模糊查询
             if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
                 q = q.Where($@"{condition}.Contains(@0)", keyword);
