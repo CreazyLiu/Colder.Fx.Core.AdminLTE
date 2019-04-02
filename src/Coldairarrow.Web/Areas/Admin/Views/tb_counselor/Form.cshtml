@@ -1,0 +1,162 @@
+@using Coldairarrow.Entity.Admin;
+@using Coldairarrow.Util;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Form.cshtml";
+
+    var obj = (tb_counselor)Model;
+    var objStr = Html.Raw(obj.ToJson());
+}
+<div style="padding:15px;padding-right:45px;">
+    <form id="form" class="form-horizontal" role="form">
+        
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">咨询师id</label>
+            <div class="col-sm-5">
+                <input name="id" value="@obj.Id" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">名称</label>
+            <div class="col-sm-5">
+                <input name="name" value="@obj.name" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-5">
+                <input name="sex" value="@obj.sex" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">头像</label>
+            <div class="col-sm-5">
+                <input name="avatar" value="@obj.avatar" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">擅长技能简介</label>
+            <div class="col-sm-5">
+                <input name="profession" value="@obj.profession" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">工作经验</label>
+            <div class="col-sm-5">
+                <input name="experience" value="@obj.experience" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">等级</label>
+            <div class="col-sm-5">
+                <input name="level" value="@obj.level" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">登录名</label>
+            <div class="col-sm-5">
+                <input name="loginname" value="@obj.loginname" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-5">
+                <input name="password" value="@obj.password" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">是否激活</label>
+            <div class="col-sm-5">
+                <input name="isactivated" value="@obj.isactivated" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">总结</label>
+            <div class="col-sm-5">
+                <input name="summary" value="@obj.summary" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">最后登录时间</label>
+            <div class="col-sm-5">
+                <input name="lastlogintime" value="@obj.lastlogintime" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">最后登录ip</label>
+            <div class="col-sm-5">
+                <input name="lastloginip" value="@obj.lastloginip" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">是否在线</label>
+            <div class="col-sm-5">
+                <input name="isonline" value="@obj.isonline" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">微信公众号openid(目前存储友盟的DeviceToken)</label>
+            <div class="col-sm-5">
+                <input name="wx_pub_openid" value="@obj.wx_pub_openid" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="submit" type="submit" class="hidden">提交</button>
+        </div>
+    </form>
+</div>
+<script>
+    var theEntity = @objStr;
+
+    $(function () {
+        initEvent();
+    });
+
+    //事件绑定
+    function initEvent() {
+        //表单校验
+        $('#form').validator().on('submit', function (e) {
+            //校验成功
+            if (!e.isDefaultPrevented()) {
+                e.preventDefault();
+
+                var values = $('#form').getValues();
+                
+                $.extend(theEntity, values);
+                loading();
+                $.postJSON('/Admin/tb_counselor/SaveData', theEntity, function (resJson) {
+                    loading(false);
+
+                    if (resJson.Success) {
+                        parent.$('#dataTable').bootstrapTable('refresh');
+                        parent.dialogSuccess();
+                        dialogClose();
+                    }
+                    else {
+                        dialogError(resJson.Msg);
+                    }
+                });
+            }
+        })
+    }
+
+    //提交表单
+    function submitForm() {
+        $('#submit').trigger('click');
+    }
+</script>

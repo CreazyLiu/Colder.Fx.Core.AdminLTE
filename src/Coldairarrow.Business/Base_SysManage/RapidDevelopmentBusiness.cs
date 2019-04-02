@@ -146,7 +146,7 @@ namespace Coldairarrow.Business.{areaName}
         /// </summary>
         /// <param name=""id"">主键</param>
         /// <returns></returns>
-        public {entityName} GetTheData(string id)
+        public {entityName} GetTheData(int id)
         {{
             return GetEntity(id);
         }}
@@ -223,7 +223,7 @@ namespace Coldairarrow.Web
             return View();
         }}
 
-        public ActionResult Form(string id)
+        public ActionResult Form(int? id)
         {{
             var theData = id.IsNullOrEmpty() ? new {entityName}() : {varBusiness}.GetTheData(id);
 
@@ -259,7 +259,7 @@ namespace Coldairarrow.Web
         {{
             if(theData.Id.IsNullOrEmpty())
             {{
-                theData.Id = Guid.NewGuid().ToSequentialGuid();
+                //theData.Id = Guid.NewGuid().ToSequentialGuid();
 
                 {varBusiness}.AddData(theData);
             }}
@@ -277,7 +277,7 @@ namespace Coldairarrow.Web
         /// <param name=""theData"">删除的数据</param>
         public ActionResult DeleteData(string ids)
         {{
-            {varBusiness}.DeleteData(ids.ToList<string>());
+            {varBusiness}.DeleteData(ids.ToList<int>());
 
             return Success(""删除成功！"");
         }}
@@ -395,7 +395,7 @@ $@"@{{
             clickToSelect: false,
             sidePagination: ""server"",
             pageNumber: 1,
-            pageSize: 30,
+            pageSize: 10,
             pageList: [10, 30, 60, 100],
             columns: [
                 {{ title: 'ck', field: 'ck', checkbox: true, width: '3%' }},{tableColsBuilder.ToString()}

@@ -1,0 +1,211 @@
+@using Coldairarrow.Entity.Admin;
+@using Coldairarrow.Util;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Form.cshtml";
+
+    var obj = (tb_user)Model;
+    var objStr = Html.Raw(obj.ToJson());
+}
+<div style="padding:15px;padding-right:45px;">
+    <form id="form" class="form-horizontal" role="form">
+        
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">id</label>
+            <div class="col-sm-5">
+                <input name="id" value="@obj.Id" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">账号ID</label>
+            <div class="col-sm-5">
+                <input name="accountid" value="@obj.accountid" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-5">
+                <input name="loginname" value="@obj.loginname" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">1.普通,2.艺术</label>
+            <div class="col-sm-5">
+                <input name="usertype" value="@obj.usertype" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">graduateyear</label>
+            <div class="col-sm-5">
+                <input name="graduateyear" value="@obj.graduateyear" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">realname</label>
+            <div class="col-sm-5">
+                <input name="realname" value="@obj.realname" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">1男2女</label>
+            <div class="col-sm-5">
+                <input name="sexy" value="@obj.sexy" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">艺术类别(对应金榜路)</label>
+            <div class="col-sm-5">
+                <input name="artcategoryid" value="@obj.artcategoryid" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">科类1问2理</label>
+            <div class="col-sm-5">
+                <input name="subjectid" value="@obj.subjectid" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">语言类型</label>
+            <div class="col-sm-5">
+                <input name="examlanguage" value="@obj.examlanguage" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">area</label>
+            <div class="col-sm-5">
+                <input name="area" value="@obj.area" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">school</label>
+            <div class="col-sm-5">
+                <input name="school" value="@obj.school" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">linkphone</label>
+            <div class="col-sm-5">
+                <input name="linkphone" value="@obj.linkphone" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">qqnumber</label>
+            <div class="col-sm-5">
+                <input name="qqnumber" value="@obj.qqnumber" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">email</label>
+            <div class="col-sm-5">
+                <input name="email" value="@obj.email" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">userlevel</label>
+            <div class="col-sm-5">
+                <input name="userlevel" value="@obj.userlevel" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">usercardnumber</label>
+            <div class="col-sm-5">
+                <input name="usercardnumber" value="@obj.usercardnumber" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">city</label>
+            <div class="col-sm-5">
+                <input name="city" value="@obj.city" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">clazz</label>
+            <div class="col-sm-5">
+                <input name="clazz" value="@obj.clazz" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">createtime</label>
+            <div class="col-sm-5">
+                <input name="createtime" value="@obj.createtime" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">用户头像</label>
+            <div class="col-sm-5">
+                <input name="avatar" value="@obj.avatar" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">微信小程序openid</label>
+            <div class="col-sm-5">
+                <input name="wx_openid" value="@obj.wx_openid" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="submit" type="submit" class="hidden">提交</button>
+        </div>
+    </form>
+</div>
+<script>
+    var theEntity = @objStr;
+
+    $(function () {
+        initEvent();
+    });
+
+    //事件绑定
+    function initEvent() {
+        //表单校验
+        $('#form').validator().on('submit', function (e) {
+            //校验成功
+            if (!e.isDefaultPrevented()) {
+                e.preventDefault();
+
+                var values = $('#form').getValues();
+                
+                $.extend(theEntity, values);
+                loading();
+                $.postJSON('/Admin/tb_user/SaveData', theEntity, function (resJson) {
+                    loading(false);
+
+                    if (resJson.Success) {
+                        parent.$('#dataTable').bootstrapTable('refresh');
+                        parent.dialogSuccess();
+                        dialogClose();
+                    }
+                    else {
+                        dialogError(resJson.Msg);
+                    }
+                });
+            }
+        })
+    }
+
+    //提交表单
+    function submitForm() {
+        $('#submit').trigger('click');
+    }
+</script>

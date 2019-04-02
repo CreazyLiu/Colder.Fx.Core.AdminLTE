@@ -17,6 +17,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.Coldairarrow.Web", "Cold
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Coldairarrow.ConsoleApp", "Coldairarrow.Console\06.Coldairarrow.ConsoleApp.csproj", "{D14CDA56-F422-4A96-9B68-7E992A98F513}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3d", "3d", "{0C3115E2-2D45-4A33-988B-E32D863207D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliOSS", "3rd\AliOSS\AliOSS.csproj", "{DC3C2F06-6851-46BE-8E47-A6430BA47E01}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aliyun.Acs.Core", "3rd\Aliyun.Acs.Core\Aliyun.Acs.Core.csproj", "{56D37D00-9D2C-477C-9B19-85102F8D135E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aliyun-net-sdk-dyplsapi", "3rd\aliyun-net-sdk-dyplsapi\aliyun-net-sdk-dyplsapi.csproj", "{50F0DFA9-EC51-4DDB-8B98-A14AF45DC121}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +59,26 @@ Global
 		{D14CDA56-F422-4A96-9B68-7E992A98F513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D14CDA56-F422-4A96-9B68-7E992A98F513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D14CDA56-F422-4A96-9B68-7E992A98F513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC3C2F06-6851-46BE-8E47-A6430BA47E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC3C2F06-6851-46BE-8E47-A6430BA47E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC3C2F06-6851-46BE-8E47-A6430BA47E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC3C2F06-6851-46BE-8E47-A6430BA47E01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D37D00-9D2C-477C-9B19-85102F8D135E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D37D00-9D2C-477C-9B19-85102F8D135E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D37D00-9D2C-477C-9B19-85102F8D135E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D37D00-9D2C-477C-9B19-85102F8D135E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F0DFA9-EC51-4DDB-8B98-A14AF45DC121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F0DFA9-EC51-4DDB-8B98-A14AF45DC121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F0DFA9-EC51-4DDB-8B98-A14AF45DC121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F0DFA9-EC51-4DDB-8B98-A14AF45DC121}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC3C2F06-6851-46BE-8E47-A6430BA47E01} = {0C3115E2-2D45-4A33-988B-E32D863207D4}
+		{56D37D00-9D2C-477C-9B19-85102F8D135E} = {0C3115E2-2D45-4A33-988B-E32D863207D4}
+		{50F0DFA9-EC51-4DDB-8B98-A14AF45DC121} = {0C3115E2-2D45-4A33-988B-E32D863207D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7557970B-2675-4EDD-B2EF-EA28744BC050}

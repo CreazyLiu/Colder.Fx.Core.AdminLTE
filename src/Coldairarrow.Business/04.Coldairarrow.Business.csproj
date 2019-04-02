@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\3rd\AliOSS\AliOSS.csproj" />
     <ProjectReference Include="..\Coldairarrow.DataRepository\02.Coldairarrow.DataRepository.csproj" />
     <ProjectReference Include="..\Coldairarrow.Entity\03.Coldairarrow.Entity.csproj" />
     <ProjectReference Include="..\Coldairarrow.Util\01.Coldairarrow.Util.csproj" />

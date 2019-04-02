@@ -258,7 +258,8 @@ namespace Coldairarrow.Util
             infos.ForEach((item, index) =>
             {
                 string isKey = item.IsKey ? $@"
-        [Key, Column(Order = {index + 1})]" : "";
+        [Key, Column(Order = {index + 1})]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]" : "";
                 Type type = DbTypeStr_To_CsharpType(item.Type);
                 string isNullable = item.IsNullable && type.IsValueType ? "?" : "";
                 string description = item.Description.IsNullOrEmpty() ? item.Name : item.Description;

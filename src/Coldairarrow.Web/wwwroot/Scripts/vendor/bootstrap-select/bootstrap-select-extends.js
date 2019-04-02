@@ -103,6 +103,7 @@ $('#roleList').selectpicker({
 
                 var data = _options.data;
                 var selected = _options.value || [];
+                console.log("selected:" +selected);
                 $(_this).empty();
                 //添加请选择
                 if (_options.pleaseSelect) {
@@ -113,7 +114,8 @@ $('#roleList').selectpicker({
                     var value = data[i][_options.valueField];
 
                     var selectedHtml = ''
-                    if (selected.indexOf(value) > -1) {
+                    if (selected.indexOf(value) > -1
+                        || selected == value) {
                         selectedHtml = 'selected="selected"';
                     }
 
