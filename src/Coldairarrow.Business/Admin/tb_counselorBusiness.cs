@@ -24,12 +24,17 @@ namespace Coldairarrow.Business.Admin
         public List<tb_counselorDTO> GetDataList(string condition, string keyword, Pagination pagination)
         {
             var where = LinqHelper.True<tb_counselorDTO>();
-            Expression<Func<tb_counselor, tb_counselorDTO>> select = a => new tb_counselorDTO
+            Expression<Func<tb_counselor, tb_counselor_questionprice, tb_counselorDTO>> select = (a, b) => new tb_counselorDTO
             {
+                price = b == null ? 0: b.price,
+                maxquestion = b == null ? 0 : b.maxquestion,
+                quickprice = b == null ? 0 : b.quickprice
             };
             select = select.BuildExtendSelectExpre();
             var q = from a in GetIQueryable().AsExpandable()
-                    select @select.Invoke(a);
+                    join b in Service.GetIQueryable<tb_counselor_questionprice>() on a.Id equals b.counselorid into ab
+                    from b in ab.DefaultIfEmpty()
+                    select @select.Invoke(a,b);
             //模糊查询
             if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
                 q = q.Where($@"{condition}.Contains(@0)", keyword);

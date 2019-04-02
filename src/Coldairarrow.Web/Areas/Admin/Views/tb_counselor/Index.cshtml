@@ -89,6 +89,19 @@
                 { title: '擅长技能简介', field: 'profession', width: '5%' },
                 { title: '工作经验', field: 'experience', width: '5%' },
                 { title: '等级', field: 'level', width: '5%' },
+                {
+                    title: '咨询问题价格', field: 'price', width: '5%', formatter: function (value, row) {
+                        return value.toFixed(2);
+                    }
+                },
+                {
+                    title: '最大追问次数', field: 'maxquestion', width: '5%', formatter: function (value, row) {
+                        return value > 0 ? value : "无限次";
+                    } },
+                {
+                    title: '急速问答价格', field: 'quickprice', width: '5%', formatter: function (value, row) {
+                        return value.toFixed(2);
+                    } },
                 { title: '登录名', field: 'loginname', width: '5%' },
                 {
                     title: '是否激活', field: 'isactivated', width: '5%', formatter: function (value, row) {
@@ -98,7 +111,7 @@
                 },
                 { title: '总结', field: 'summary', width: '50%' },
                 { title: '最后登录时间', field: 'lastlogintime', width: '5%' },
-                { title: '最后登录ip', field: 'lastloginip', width: '5%' },
+                //{ title: '最后登录ip', field: 'lastloginip', width: '5%' },
                 {
                     title: '是否在线', field: 'isonline', width: '5%', formatter: function (value, row) {
                         var text = value ? "在线" : "离线"

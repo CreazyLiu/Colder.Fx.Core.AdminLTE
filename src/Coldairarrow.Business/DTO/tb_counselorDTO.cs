@@ -9,5 +9,8 @@ namespace Coldairarrow.Business.DTO
     {
         public string categorys { get; set; }
         public string CounselorAvatar { get; set; }
+        public decimal price { get; set; }
+        public int maxquestion { get; set; }
+        public decimal quickprice { get; set; }
     }
 }

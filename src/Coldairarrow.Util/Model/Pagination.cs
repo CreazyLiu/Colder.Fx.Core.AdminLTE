@@ -131,54 +131,6 @@ namespace Coldairarrow.Util
         /// </summary>
         public int total { get => _pageCount; }
 
-        /// <summary>
-        /// 构建jqGrid返回的数据
-        /// </summary>
-        /// <param name="dataList">返回的数据列表</param>
-        /// <returns></returns>
-        public object BuildTableResult_JqGrid(object dataList)
-        {
-            _watch.Stop();
-
-            var resData = new
-            {
-                rows = dataList,
-                total = _pageCount,
-                page = _pageIndex,
-                records = _recordCount,
-                costtime = _watch.ElapsedMilliseconds
-            };
-
-            return resData;
-        }
-
-        #endregion
-
-        #region layui方案
-
-        public int limit { get => _pageRows; set => _pageRows = value; }
-
-        /// <summary>
-        /// 构建Layui 返回的表格数据
-        /// </summary>
-        /// <param name="dataList">返回的数据列表</param>
-        /// <returns></returns>
-        public object BuildTableResult_Layui(object dataList)
-        {
-            _watch.Stop();
-
-            var resData = new
-            {
-                code = 0,
-                msg = "获取成功！",
-                count = _recordCount,
-                data = dataList,
-                costtime = _watch.ElapsedMilliseconds
-            };
-
-            return resData;
-        }
-
         #endregion
 
         #region Easyui DataGrid方案
@@ -217,9 +169,41 @@ namespace Coldairarrow.Util
         #endregion
 
         #region BootstrapTable方案
-
-        public int offset { get => (_pageIndex - 1) * limit; set => _pageIndex = value / limit + 1; }
-
+        private int _limit;
+        public int limit
+        {
+            get
+            {
+                return _limit;
+            }
+            set
+            {
+                if(value > 0)
+                {
+                    _limit = value;
+                    _pageRows = value;
+                    _pageIndex = _offset / value + 1;
+                }
+            }
+        }
+        private int _offset;
+        public int offset
+        {
+            get
+            {
+                return _offset;
+                //var val = (_pageIndex - 1) * _limit;
+                //return val;
+            }
+            set
+            {
+                _offset = value;
+                if(_limit > 0)
+                {
+                    _pageIndex = value / _limit + 1;
+                }
+            }
+        }
         public object BuildTableResult_BootstrapTable(object dataList)
         {
             return BuildTableResult_DataGrid(dataList);
